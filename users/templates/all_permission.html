@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>gestion des demandes de permission</title>
+    <style>
+        body {
+            position: sticky;
+            width: 100dvw;
+            height: 100dvh;
+            margin: 0;
+            display: grid;
+            place-content: center;
+            background: linear-gradient(to bottom right, rgba(53, 109, 248, 0.3) 20%, rgba(161, 253, 161, 0.15));
+            overflow: hidden;
+        }
+
+        /* THESE ARE SOME COMMON DESIGNS */
+        * {
+            box-sizing: border-box
+        }
+
+        :root {
+            --clr: rgb(24, 24, 179)
+        }
+
+        a {
+            color: black;
+            text-decoration: none
+        }
+
+        /* FORMATING THE CONTAINER SIZE AND SOME DESIGN */
+        table {
+            position: relative;
+            display: flex;
+            width: 100vw;
+            height: 80vh;
+            background: white;
+            border-radius: 30px;
+            text-align: center;
+            /* background: linear-gradient( to bottom right, rgba(53, 109, 248, 0.3) 20%,rgba(161, 253, 161, 0.15)); */
+            border-collapse: collapse;
+            overflow-y: scroll;
+            box-shadow: 0 0 20px rgba(13, 13, 141, 0.312);
+            width: 100%;
+            font: 18px arial;
+        }
+
+        table::-webkit-scrollbar {
+            display: none;
+        }
+
+        h1 {
+            display: block;
+            font: small-caps 40px arial;
+            text-align: center;
+            margin: 10px auto;
+        }
+
+        tr:nth-child(odd) {
+            background: rgb(241, 241, 255);
+            color: var(--clr);
+        }
+
+        th,
+        td {
+            padding: 0 8px;
+            height: 60px;
+            text-align: left;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: var(--clr);
+            font: small-caps 20px times;
+            color: whitesmoke;
+        }
+
+        th:first-child {
+            border-radius: 30px 0 0 0;
+        }
+
+        th:last-child {
+            border-radius: 0 30px 0 0;
+            width: 15%;
+        }
+
+        /* Styles for form */
+        .form {
+            display: flex;
+            margin: 5px;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        #search_query {
+            border-width: 1px;
+            border-radius: 5px;
+            padding: 5px;
+        }
+
+        #search_query:focus {
+            border-color: rgb(70, 240, 234);
+            border-width: 2px;
+        }
+
+        #send_btn {
+            background-color: blue;
+            color: white;
+            padding: 5px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 class="title">Voicis Tous Les Permission.</h1>
+    <div class="form">
+        <form action="" method="post">
+            {%csrf_token%}
+            <input type="search" name="q" id="search_query" placeholder="Entre la matricule">
+            <input type="submit" value="Rechercher" id="send_btn">
+        </form>
+    </div>
+    <table>
+        <tr>
+            <th>Profil</th>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Matricule</th>
+            <th>Promotion</th>
+            <th>Commandant Promotion</th>
+            <th>Motif</th>
+            <th>Date</th>
+            <th>Date Aller Souhaité</th>
+            <th>Date Retour Souhaité</th>
+            <th>Voire les Reponse</th>
+        </tr>
+        {% for all in all_permission %}
+        <tr>
+            {% if all.demandeur.image %}
+            <td><img src="{{ all.demandeur.image.url }}" alt=""></td>
+            {% else %}
+            <td>No image available</td>
+            {% endif %}
+            <td>{{ all.demandeur.nom }}</td>
+            <td>{{ all.demandeur.prenom }}</td>
+            <td>{{ all.demandeur.matricule }}</td>
+            <td>{{ all.demandeur.promotion }}</td>
+            <td>{{ all.demandeur.commandant_promotion }}</td>
+            <td>{{ all.motif }}</td>
+            <td>{{ all.date }}</td>
+            <td>{{ all.date_aller }}</td>
+            <td>{{ all.date_retour }}</td>
+            <td>
+                <a href="{% url 'reponse_dir' all.id %}">Reponse</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+
+</html>
+</body>
+
+</html>

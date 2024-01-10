@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>Repondre au demande du permission du candidat officier</h3>
+    <h4>Nom: {{ obj.nom }} </h4>
+    <h4>Prnom: {{ obj.prenom }} </h4>
+    <h4>Matricule: {{ obj.matricule }} </h4>
+    <h4>promotion: {{ obj.promotion }} </h4>
+
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <textarea name="accords" id="accords" cols="30" rows="10" placeholder="Mettre içi la Réponse"></textarea>
+        
+        <button type="submit">Envoyer</button>
+    </form>
+</body>
+</html>

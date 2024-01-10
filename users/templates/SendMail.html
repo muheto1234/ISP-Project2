@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Description with a Link</title>
+    <style>
+        body {
+            position: sticky;
+            width: 100dvw;
+            height: 100dvh;
+            margin: 0;
+            display: grid;
+            place-content: center;
+            background: linear-gradient(to bottom right, rgba(53, 109, 248, 0.3) 20%, rgba(161, 253, 161, 0.15));
+            overflow: hidden;
+        }
+
+        /* THESE ARE SOME COMMON DESIGNS */
+        * {
+            box-sizing: border-box
+        }
+
+        :root {
+            --clr: rgb(24, 24, 179)
+        }
+
+        a {
+            color: black;
+            text-decoration: none
+        }
+
+    </style>
+</head>
+
+<body>
+    <h1>Reset password</h1>
+    <h3>Votre adresse email: {{email}}</h3>
+    <h3>Votre matricule: {{matricule}}</h3>
+    <p>Vous pouvez réinitialiser votre mot de passe en cliquant sur le lien en dessous</p>
+
+    <p>Go to reset password page:</p>
+    <p>{{reset_link}}</p>
+</body>
+
+</html>

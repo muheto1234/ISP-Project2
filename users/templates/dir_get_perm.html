@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            position: sticky;
+            width: 100dvw;
+            height: 100dvh;
+            min-width: 980px;
+            margin: 0;
+            display: grid;
+            place-content: center;
+            background: linear-gradient( to bottom right, rgba(53, 109, 248, 0.3) 20%,rgba(161, 253, 161, 0.15));
+            perspective:300px;
+            overflow: hidden;
+        }
+        /* THESE ARE SOME COMMON DESIGNS */
+        *{box-sizing: border-box}
+        :root{
+            --clr:rgb(24, 24, 179)
+        }
+        a{color: black;text-decoration: none}
+        p{font-size: 17px}
+        .container{
+            position: relative;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            width: 60vw;
+            padding: 30px;
+            padding-top: 50px;
+            background: white;
+            border-radius: 10px;
+            box-shadow:  0 3px 15px var(--clr);
+            font:200 18px arial;
+            transition: .2s ease-in-out;
+            transform: rotateX(122deg);
+            transform-origin: bottom;
+            animation: anime .4s ease-in-out 1 forwards;
+        }
+        @keyframes anime {
+            100%{
+                transform: rotateX(0);
+            }
+        }
+        .introduce{
+            position: relative;
+            display:flex;
+            /* border: 2px solid ; */
+        }
+        .introduce h2{
+            margin: 5px;
+            margin-left: 30px;
+            font: 500 20px arial;
+            /* color:#19b7d2; */
+            color: rgb(0, 119, 255);
+        }
+        .introduce .img{
+            display: grid;
+            place-content: center;
+        }
+        .img img{
+            position: relative;
+            display: block;
+            width: 135px;
+            height: auto;
+            margin: auto;
+        }
+        .intro{
+            margin: auto;
+        }
+        .intro::after{
+            content: "";
+            position: absolute;
+            top: 0;
+            height: 100%;
+            width: 5px;
+            margin-left: 10px;
+            background-color: gray;
+            border-radius: 10px;
+            z-index: 100;
+        }
+        .database h4{
+            color: blue;
+            margin: 10px;
+            font: 16px arial;
+        }
+        .database .motif{
+            position: relative;
+            width: 250px;
+            height: 200px;
+            padding: 5px;
+            margin: 0;
+            border-radius: 10px;
+            background-color: var(--clr);
+            background-color: rgb(0, 119, 255);
+            word-break: break-all;
+            font-size: 15px;
+            overflow: auto;
+            box-shadow: 0 0 10px  rgb(14, 14, 255);    
+        }
+        .motifcont{
+            position: relative;
+        }
+        .shadow{
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 55%;
+            background-color: transparent;
+            box-shadow: 0 0 25px blue;
+            z-index: -1;
+            border-radius: 10px;
+        }
+        .motif::-webkit-scrollbar{
+            display: none;
+        }
+        .motif h4{
+            margin: 0;
+            color: rgb(214, 226, 226);
+            text-shadow: 0 0 10px white;
+            border: none;
+            outline: none;
+        }
+        .form{
+            display: flex;
+            gap: 20px;
+        }
+        form{
+            display: grid;
+            place-content: center;
+        }
+        .container .title{
+            position: absolute;
+            top: 0;
+            font: small-caps 25px arial;
+            text-align: center;
+            color: var(--clr);
+        }
+        .info{
+            display: grid;
+            place-content: center;
+            background-color: rgb(194, 216, 254);
+            border-radius: 8px;
+        }
+        .info span{
+            display: inline-block;
+            width:fit-content;
+            height: 100%;
+            padding: 4px;
+            background-color: rgb(29, 29, 203);
+            /* background: var(--clr) linear-gradient(rgb(54, 244, 244), rgba(0, 0, 255, 0.635)); */
+            border-radius:5px 0 0 5px; 
+            color: white;
+            font-style: italic;
+        }
+        .info h4{
+            height: 30px;
+            margin: 0;
+            border-radius: 7px;
+            border: 2px solid white;
+        }
+
+        textarea{
+            width: 300px;
+            color: blue;
+            font-size: 17px;
+            outline: 2px solid rgb(212, 252, 212);
+            border: none;
+            border-left: 4px solid blue;
+            padding-left: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 255, 0.214) ;
+            text-align: justify;
+        }
+        textarea::placeholder{
+            color: blue;
+        }
+        .date{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            width:100%;
+            height: 30px;
+            border-radius: 6px;
+            background-color: bisque;
+            margin: 5px 0;
+            padding: 0 30px;
+            box-shadow: 0 0 10px rgb(191, 191, 255);
+            background: linear-gradient(to right,  rgb(226, 226, 255) 0%, rgba(109, 255, 245, 0.3) );
+        }
+        .date.two{
+            background: linear-gradient(to right, rgba(109, 255, 245, 0.3) 0%, rgb(226, 226, 255) 50%);
+        }
+        .date input{
+            height: 20px;
+            border: 1px solid var(--clr);
+            border-radius: 5px;
+            color: blue ;
+        }
+        .day p{
+            font: 15px arial;
+            color: var(--clr);
+        }
+        button{
+            position: relative;
+            left: calc(50% - 75px);
+            cursor: pointer;
+            margin: 10px 0;
+            width: 150px;
+            height: 35px;
+            background-color: var(--clr);
+            outline: 1px solid blue;
+            border: 2px solid white;
+            border-radius: 5px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="introduce">
+            <div class="img">
+                <img src="3541871.png" alt="">
+            </div>
+            <div class="intro">
+                {% if get_Register_all.image %}
+                <td><img src="{{ get_Register_all.image.url }}" alt="" ></td>
+                {% else %}
+                <td><h2>No image available</h2></td>
+                {% endif %}
+                <h2>Grade: {{get_Register_all.demandeur.grade}} </h2>
+                <h2>Nom: {{get_Register_all.demandeur.nom}} </h2>
+                <h2>Prenom: {{get_Register_all.demandeur.prenom}} </h2>
+                <h2>Matricule: {{get_Register_all.demandeur.matricule}} </h2>
+            </div>
+        </div>
+        
+        <div class="form">
+            <div class="database">
+                
+                <div class="motifcont">
+                    <div class="motif">
+                        <h4 contenteditable="true" >Motif:{{ get_Register_all.motif }}</h4>
+                    </div>
+                    <div class="shadow"></div>
+                </div>
+                <div class="day">
+                    <p>Date aller souhaité: <br> {{ get_Register_all.date_aller }}</p>
+                    <p>Date Retour souhaité: <br> {{ get_Register_all.date_retour }}</p>
+                </div>
+               
+            </div>
+
+            <form action="" enctype="multipart/form-data" method="post">
+                {% csrf_token %}
+                <textarea name="accords" id="accords" cols="30" rows="10" placeholder="Repondre..."></textarea>
+                <div class="date">
+                    <label for="date_aller">Dater d'aller:</label>
+                    <input type="date" name="date_aller">
+                </div>
+                <div class="date two">
+                    <label for="date_retour">Date de Retour:</label>
+                    <input type="date" name="date_retour">
+                </div>
+                <button type="submit">Envoyer</button>
+            </form>
+        </div>
+    </div>
+   
+</body>
+</html>

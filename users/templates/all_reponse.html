@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            position: sticky;
+            width: 100dvw;
+            height: 100dvh;
+            margin: 0;
+            display: grid;
+            place-content: center;
+            background: linear-gradient( to bottom right, rgba(53, 109, 248, 0.3) 20%,rgba(161, 253, 161, 0.15));
+            perspective:300px;
+            overflow: hidden;
+        }
+        /* THESE ARE SOME COMMON DESIGNS */
+        *{box-sizing: border-box}
+        :root{
+            --clr:rgb(24, 24, 179)
+        }
+        a{color: black;text-decoration: none}
+        p{font-size: 17px}
+        .container{
+            position: relative;
+            display: grid;
+            place-content: center;
+            width: 60vw;
+            height: 100vh;
+            /* padding: 30px; */
+            /* padding-top: 200px; */
+            background: white;
+            /* border-radius: 30px; */
+            box-shadow:  0 3px 15px var(--clr);
+            font:200 18px arial;
+            text-align: center;
+            transition: .2s ease-in-out;
+            transform: rotateX(122deg);
+            transform-origin: bottom;
+            animation: anime .4s ease-in-out 1 forwards;
+        }
+        @keyframes anime {
+            100%{
+                transform: rotateX(0);
+            }
+        }
+        img{
+            /* position: absolute;
+            top: 20px; */
+            display: inline-block;
+            width: 140px;
+            height: 150px;
+            margin: auto;
+        }
+        ul{
+            list-style: none;
+        }
+        h2{
+            margin: 7px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        {% if cop_obj.image %}
+            <td><img src="{{ cop_obj.image.url }}" alt="" ></td>
+            {% else %}
+            <td>No image available</td>
+            {% endif %}
+            <h2>Grade : {{ cop_obj.demandeur.grade }}</h2>
+        <h2>Nom {{ cop_obj.demandeur.nom }}</h2>
+        <h2>Prenom : {{ cop_obj.demandeur.prenom }}</h2>
+        <h2>Matricule:Grade : {{ cop_obj.matricule.grade }}</h2>
+        <!-- Affichez d'autres informations sur l'objet "cop" selon vos besoins -->
+  
+        <h2>Réponses :</h2>
+        {% if reponses %}
+        <ul>
+            {% for reponse in reponses %}
+                <li>{{ reponse.accords }}</li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p>Aucune réponse disponible.</p>
+        {% endif %}
+        <!-- ``` -->
+    </div>
+</body>
+</html>

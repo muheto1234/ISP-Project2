@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gestion des utilisateurs</title>
+    <style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+        margin: 0;
+        padding: 0;
+        }
+
+        form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        }
+
+        table {
+        width: 100%;
+        border-collapse: collapse;
+        }
+
+        th, td {
+        padding: 10px;
+        text-align: left;
+        }
+
+        th {
+        background-color: #333333;
+        color: #ffffff;
+        text-transform: uppercase;
+        }
+
+        tr:nth-child(even) {
+        background-color: #f2f2f2;
+        }
+
+        tr:hover {
+        background-color: #cccccc;
+        }
+
+        button {
+        background-color: #ff5500;
+        border: none;
+        border-radius: 5px;
+        padding: 8px 15px;
+        font-size: 16px;
+        font-weight: bold;
+        color: #ffffff;
+        text-decoration: none;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+        background-color: #ff9900;
+        }
+        .page-title {
+        font-size: 32px;
+        margin-top: 1px;
+        margin-bottom: 1px;
+        }
+
+        table {
+        width: 100%;
+        border-collapse: collapse;
+        }
+
+    /* ... styles for the table ... */
+    </style>
+</head>
+<body>
+    <h1>Liste des utilisateurs</h1>
+    <button><a href="{% url 'directeur' %}">Homme</a></button>
+    <button><a href="{% url 'login' %}">Se deconnecter</a></button>
+    <form action="" method="post">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <th>Utilisateur</th>
+                <th>Directeur</th>
+                <th>Commandant</th>
+                <th>Secrétaire</th>
+                <th>Actions</th>
+            </tr>
+            {% for user in users %}
+            <tr>
+                <td>{{ user.username }}</td>
+                <td>{{ user.is_directeur }}</td>
+                <td>{{ user.is_commandant }}</td>
+                <td>{{ user.is_secraiteur }}</td>
+                
+                <td>
+                    <button><a href="{% url 'update_roles' user.id %}">Update</a></button>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </form>
+</body>
+</html>

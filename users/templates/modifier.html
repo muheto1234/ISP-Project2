@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            position: sticky;
+            width: 100dvw;
+            height: 100dvh;
+            margin: 0;
+            display: grid;
+            place-content: center;
+            background: linear-gradient( to bottom right, rgba(53, 109, 248, 0.3) 20%,rgba(161, 253, 161, 0.15));
+            perspective:300px;
+            overflow: hidden;
+        }
+        /* THESE ARE SOME COMMON DESIGNS */
+        *{box-sizing: border-box}
+        :root{
+            --clr:rgb(24, 24, 179)
+        }
+        a{color: black;text-decoration: none}
+        p{font-size: 17px}
+        ::-webkit-scrollbar{
+            display: none;
+        }
+        form{
+            position: relative;
+            display: grid;
+            place-content: center;
+            width: 60vw;
+            padding: 30px;
+            /* padding-top: 100px; */
+            background: white;
+            border-radius: 5px;
+            box-shadow:  0 3px 15px var(--clr);
+            font:200 18px arial;
+            text-align: center;
+            color: rgb(49, 49, 49);
+            transition: .2s ease-in-out;
+            transform: rotateX(100deg);
+            transform-origin: bottom;
+            animation: anime .4s ease-in-out 1 forwards;
+        }
+        @keyframes anime {
+            100%{
+                transform: rotateX(0);
+            }
+        }
+        textarea{
+            border: 2px solid var(--clr);
+            border-left: 10px solid var(--clr);
+            outline: none;
+            border-radius: 5px;
+            padding: 10px;
+            overflow-y: scroll;
+            font: 15px tahoma;
+            color: var(--clr);
+        }
+        label.motif{
+            background-color: white;
+            position: relative;
+            padding:0 5px;
+            font-style: italic;
+            top: 12px;
+            left: 0;
+            float: left;
+            color: var(--clr);
+            margin-left: 45px;
+        }
+
+        label{
+            font-size: 16px;
+        }
+        button{
+            height: 35px;
+            width: 200px;
+            border: none;
+            outline: none;
+            background-color: var(--clr);
+            color: white;
+            /* color: var(--clr); */
+            font-size: 16px;
+            border-radius: 30px;
+            margin:10px auto;
+        }
+        input[type="text"]{
+            border: 2px solid var(--clr);
+            margin: 5px 0;
+            text-align: center;
+            border-radius: 5px;
+        }
+
+        label{
+            color: black;
+            font: italic 18px tahoma ;
+        }
+    </style>
+</head>
+<body>
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token%}
+        <div class="inputs">
+            <div class="form-group">
+                <label for="id_first_name" class="motif">Motif</label><br>
+                {{ form.motif }}
+                <!-- <textarea name="" id="" cols="30" rows="10"></textarea> -->
+            </div>
+            <div class="form-group">
+                <label for="id_first_name">Date aller souhaité :</label>
+                {{ form.date_aller }}
+            </div>
+            <div class="form-group">
+                <label for="id_first_name">Date retour souhaité :</label>
+                {{ form.date_retour }}
+            </div>
+        </div>
+        <button type="submit">Modifier</button>
+    </form>
+</body>
+</html>

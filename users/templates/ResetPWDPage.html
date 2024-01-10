@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page de réinitialisation</title>
+    <style>
+        body {
+            position: sticky;
+            width: 100dvw;
+            height: 100dvh;
+            margin: 0;
+            display: grid;
+            place-content: center;
+            background: linear-gradient(to bottom right, rgba(53, 109, 248, 0.3) 20%, rgba(161, 253, 161, 0.15));
+            overflow: hidden;
+        }
+
+        /* THESE ARE SOME COMMON DESIGNS */
+        * {
+            box-sizing: border-box
+        }
+
+        :root {
+            --clr: rgb(24, 24, 179)
+        }
+
+        .form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .input-container {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        button[type="submit"] {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Formulaire de réinitialisation</h1>
+    <div class="form">
+        <form action="" method="post">
+            {% csrf_token %}
+            <div class="input-container">
+                <label for="password">Nouveau mot de passe</label>
+                <input type="password" name="password" id="password">
+            </div>
+
+            <div class="input-container">
+                <label for="confirm_password">Confirmer votre Nouveau mot de passe</label>
+                <input type="password" name="confirm_password" id="confirm_password">
+            </div>
+
+            <button type="submit" id="submit_btn">Modifier</button>
+        </form>
+    </div>
+
+</body>
+
+</html>

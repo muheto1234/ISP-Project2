@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Réinitialisation</title>
+    <style>
+    body {
+        background-color: #f2f2f2; /* Couleur de fond de la page */
+        }
+
+        h1 {
+        color: #333333; /* Couleur du texte */
+        font-size: 32px; /* Taille de la police */
+        text-align: center; /* Alignement du texte au centre */
+        margin-top: 150px; /* Marge supérieure pour centrer le titre */
+        }
+
+        button {
+        display: flex; /* Affiche le bouton en tant que bloc */
+        justify-content: center; /* Centre horizontalement le contenu du bouton */
+        margin-top: 40px; /* Marge supérieure pour espacer le bouton du titre */
+        }
+
+        a {
+        text-decoration: none; /* Supprime la ligne sous le lien */
+        color: #ffffff; /* Couleur du texte */
+        font-weight: bold; /* Met le texte en gras */
+        font-size: 24px; /* Taille de la police */
+        padding: 10px 20px; /* Espace intérieur autour du lien */
+        background-color: #ff0000; /* Couleur de fond */
+        border-radius: 5px; /* Coins arrondis */
+        box-shadow: 2px 2px 5px #888888; /* Ombre */
+        transition: background-color 0.3s ease; /* Transition fluide lors du survol */
+        }
+
+        a:hover {
+        background-color: #ff5500; /* Couleur de fond lors du survol */
+        }
+            </style>
+</head>
+<body>
+    <h1>Votre demande a été réinitialiser avec succes</h1>
+    <button><a href="{% url 'connexionUser' %}">Se connecter</a></button>
+</body>
+</html>

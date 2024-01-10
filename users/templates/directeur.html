@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Directeur page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            position: sticky;
+            width: 100dvw;
+            height: 100dvh;
+            margin: 0;
+            display: grid;
+            place-content: center;
+            background: linear-gradient(to bottom right, rgba(53, 109, 248, 0.3) 20%, rgba(161, 253, 161, 0.15));
+            overflow: hidden;
+        }
+
+        /* THESE ARE SOME COMMON DESIGNS */
+        * {
+            box-sizing: border-box
+        }
+
+        :root {
+            --clr: rgb(24, 24, 179)
+        }
+
+        a {
+            color: black;
+            text-decoration: none
+        }
+
+        p {
+            font-size: 17px
+        }
+
+        /* FORMATING THE CONTAINER SIZE AND SOME DESIGN */
+        table {
+            position: relative;
+            display: flex;
+            width: fit-content;
+            height: 80vh;
+            border-collapse: collapse;
+            border-radius: 20px;
+            background: white;
+            box-shadow: 0 0 20px rgba(13, 13, 141, 0.312);
+            text-align: center;
+            font: 18px arial;
+            overflow-y: scroll;
+            transform: scale(0.98);
+        }
+
+        table::-webkit-scrollbar {
+            display: none;
+        }
+
+        h1 {
+            font: small-caps 35px arial;
+            text-align: center;
+            margin: 0px auto;
+            color: white;
+            text-shadow: 0 0 20px rgba(0, 0, 255, 0.5);
+        }
+
+        tr:nth-child(odd) {
+            background: rgb(241, 241, 255);
+            color: var(--clr);
+        }
+
+        th,
+        td {
+            padding: 0 8px;
+            height: 60px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: var(--clr);
+            font: small-caps 20px times;
+            color: whitesmoke;
+        }
+
+        th:first-child {
+            border-radius: 20px 0 0 0;
+        }
+
+        th:last-child {
+            border-radius: 0 20px 0 0;
+            width: 15%;
+        }
+
+        /* Styles for form */
+        .formcont {
+            position: relative;
+            display: flex;
+            justify-content: flex-end;
+            flex-wrap: wrap;
+            width: 100%;
+            padding-right: 15px;
+        }
+
+        .form {
+            position: relative;
+            display: grid;
+            place-content: center;
+            margin: 10px;
+            min-width: 359px;
+            min-height: 34px;
+            background-color: rgb(241, 241, 255);
+            border-radius: 30px;
+            outline: 2px solid var(--clr);
+        }
+
+        #search_query {
+            border-width: 1px;
+            border-radius: 5px;
+            padding: 5px;
+            height: 25px;
+            margin-left: 40px;
+            font: 17px tahoma;
+            outline: none;
+            border: none;
+            background-color: transparent;
+            color: var(--clr);
+        }
+
+        #search_query::placeholder {
+            color: var(--clr);
+        }
+
+        #search_query:focus {
+            border-color: rgb(70, 240, 234);
+            border-width: 2px;
+        }
+
+        #send_btn {
+            background-color: var(--clr);
+            color: white;
+            padding: 5px;
+            height: 34px;
+            border-radius: 0 30px 30px 0;
+            border: none;
+            outline: none;
+            font-size: 16px;
+            padding: 0 10px;
+        }
+
+        .fa-solid {
+            position: absolute;
+            top: 9px;
+            left: 15px;
+            color: var(--clr);
+        }
+
+        input[type="button"] {
+            position: relative;
+            height: 38px;
+            width: 180px;
+            margin: 8px auto;
+            border-radius: 25px;
+            border: none;
+            outline: none;
+            background-color: rgb(5, 172, 11);
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.123);
+            /* background-color: rgb(247, 39, 39);
+            box-shadow: 0 0 10px rgba(247, 39, 39, 0.125); */
+            color: white;
+            font: 17px arial;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="formcont">
+        <h1>Liste Des Demandes Des Permisssions.</h1>
+        <div class="form">
+            <form action="" method="post">
+                {%csrf_token%}
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="search" name="q" id="search_query" placeholder="Entre la matricule">
+                <input type="submit" value="Rechercher" id="send_btn">
+            </form>
+        </div>
+        <a href="{% url 'users' %}">
+            <input type="button" value="Ajouter Des utilisateurs">
+        </a>
+        <a href="{% url 'login' %}">
+            <input type="button" value="Se deconnecter">
+        </a>
+    </div>
+    <table>
+        <tr>
+            <th>Profil</th>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Matricule</th>
+            <th>Promotion</th>
+            <th>Commandant Promotion</th>
+            <th>Date</th>
+            <th>Repondre</th>
+            <th>Voire si il a réçue la Reponse</th>
+            <th>Action</th>
+        </tr>
+        <!-- {% for all in all_permission %} -->
+        <tr>
+            <!-- {% if all.demandeur.image %} -->
+            <td><img src="{{ all.demandeur.image.url }}" alt=""></td>
+            <!-- {% else %} -->
+            <td>No image available</td>
+            <!-- {% endif %} -->
+            <td>{{ all.demandeur.nom }}</td>
+            <td>{{ all.demandeur.prenom }}</td>
+            <td>{{ all.demandeur.matricule }}</td>
+            <td>{{ all.demandeur.promotion }}</td>
+            <td>{{ all.demandeur.commandant_promotion }}</td>
+            <td>{{ all.date }}</td>
+            <td>
+                <a href="{% url 'dir_get_perm' all.id %}">Repondre</a>
+            </td>
+            <td>
+                <a href="{% url 'reponse_dir' all.id %}">Voire la reponse</a>
+            </td>
+            <td>
+                <input type="checkbox" id="maCase_{{ all.id }}" name="maCase">
+            </td>
+
+
+        </tr>
+        <!-- {% endfor %} -->
+    </table>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+
+            checkboxes.forEach(function (checkbox) {
+                const checkboxId = checkbox.id;
+
+                // Vérifier si l'état de la case à cocher est enregistré dans localStorage
+                const checkboxState = localStorage.getItem(checkboxId);
+
+                // Si l'état de la case à cocher est enregistré, restaurez-le
+                if (checkboxState === 'true') {
+                    checkbox.checked = true;
+                } else if (checkboxState === 'false') {
+                    checkbox.checked = false;
+                }
+
+                // Gestionnaire d'événements pour enregistrer les changements de case à cocher
+                checkbox.addEventListener('change', function (event) {
+                    const checkbox = event.target;
+                    const checkboxId = checkbox.id;
+                    const checkboxState = checkbox.checked;
+
+                    // Stocker l'état de la case à cocher dans localStorage
+                    localStorage.setItem(checkboxId, checkboxState);
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

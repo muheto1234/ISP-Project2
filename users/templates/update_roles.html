@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+        margin: 0;
+        padding: 0;
+        }
+
+        form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        }
+
+        button {
+        background-color: #ff5500;
+        border: none;
+        border-radius: 5px;
+        padding: 15px 30px;
+        font-size: 24px;
+        font-weight: bold;
+        color: #ffffff;
+        text-decoration: none;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-bottom: 20px;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+        background-color: #ff9900;
+        }
+
+        label {
+        font-size: 18px;
+        font-weight: bold;
+        color: #333333;
+        margin-bottom: 10px;
+        }
+
+        input[type="checkbox"] {
+        margin-bottom: 15px;
+        }
+
+        button[type="submit"] {
+        background-color: #333333;
+        padding: 12px 25px;
+        font-size: 20px;
+        letter-spacing: 1px;
+        }
+
+        button[type="submit"]:hover {
+        background-color: #555555;
+        }
+    </style>
+</head>
+<body>
+    <form action="" method="post">
+        {%  csrf_token %}
+        <button><a href="{% url 'login' %}">Se deconnecter</a></button>
+        <button><a href="{% url 'users' %}">Retourner</a></button>
+        <label for="is_directeur">Directeur:</label>
+        <input type="checkbox" name="is_directeur">
+        <label for="is_commandant">Commandant:</label>
+        <input type="checkbox" name="is_commandant">
+        <label for="is_secraiteur">Secreteur:</label>
+        <input type="checkbox" name="is_secraiteur">
+        <button type="submit">Update</button>
+    </form>
+</body>
+</html>

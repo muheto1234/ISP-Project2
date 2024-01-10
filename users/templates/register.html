@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
+    <style>
+        body {
+            position: sticky;
+            width: 100dvw;
+            height: 100dvh;
+            min-width: 905px;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            place-content: center;
+            overflow: hidden;
+        }
+
+        /* THESE ARE SOME COMMON DESIGNS */
+        * {
+            box-sizing: border-box
+        }
+
+        :root {
+            --clr: rgb(24, 24, 179)
+        }
+
+        a {
+            color: black;
+            text-decoration: none
+        }
+
+        p {
+            font-size: 17px;
+            margin: 0;
+        }
+
+        /* FORMATING THE CONTAINER SIZE AND SOME DESIGN */
+        .container {
+            position: relative;
+            display: flex;
+            width: 100vw;
+            height: 100vh;
+            min-width: 905px;
+            perspective: 400px;
+        }
+
+        /* HOME CONTENT */
+        .home {
+            position: absolute;
+            width: 40%;
+            height: 100%;
+            display: grid;
+            place-content: center;
+            color: rgb(31, 31, 39);
+            color: whitesmoke;
+            background: linear-gradient(rgb(115, 115, 255) 10%, rgb(8, 8, 213));
+            font: 18px arial;
+        }
+
+        .content {
+            position: relative;
+            top: -60px;
+            padding: 5vw;
+            text-align: center;
+        }
+
+        .content img {
+            width: 130px;
+            height: auto;
+            filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.532));
+            margin: 0;
+        }
+
+        .content h1 {
+            margin-top: 0;
+            font: 700 small-caps 45px arial;
+        }
+
+        /* FORM CONTENT DESIGNING... */
+        .form {
+            position: relative;
+            top: 50%;
+            left: 70%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-content: center;
+            gap: 10px;
+            height: 60%;
+            width: 500px;
+            text-align: center;
+            transition: .2s ease-in-out;
+            transform: translate(-50%, -50%) rotateY(94.07deg);
+            transform-origin: right;
+            animation: anime .3s ease-in-out 1 forwards;
+        }
+
+        @keyframes anime {
+            100% {
+                transform: translate(-50%, -50%) rotate(0);
+            }
+        }
+
+        .introduction {
+            position: relative;
+            margin: 0 auto;
+            text-align: center;
+            color: rgb(24, 24, 179);
+        }
+
+        .introduction h1,
+        .introduction p {
+            margin: 0;
+            text-align: center;
+            font: 500 40px arial;
+        }
+
+        .introduction h1 {
+            margin-bottom: 10px;
+        }
+
+        .introduction p {
+            font: italic 16px arial;
+        }
+
+        .introduction p:first-of-type {
+            font-style: normal;
+            margin-bottom: 5px;
+        }
+
+        form {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+
+        /* adding form background color and and borders */
+        form::after {
+            position: absolute;
+            top: -190px;
+            content: '';
+            width: 550px;
+            height: 500px;
+            border: 1px solid var(--clr);
+            border-radius: 10px;
+            border-left: 13px solid var(--clr);
+            box-shadow: 0 0 20px rgba(0, 0, 255, 0.335);
+            z-index: -1;
+        }
+
+        form .errors {
+            position: relative;
+        }
+
+        form span {
+            color: red;
+            font: italic 16px unkown;
+            margin: 0;
+        }
+
+        /* FORM LABEL AND INPUT DESIGNING */
+        .input {
+            position: relative;
+            top: -15px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            text-align: left;
+        }
+
+        /* button */
+        button {
+            cursor: pointer;
+            width: 200px;
+            height: 40px;
+            margin: 0 auto;
+            border: none;
+            border-radius: 30px;
+            outline: none;
+            color: white;
+            text-transform: uppercase;
+            background: linear-gradient(rgb(160, 160, 219), rgb(24, 24, 179) 100%);
+        }
+
+        .connexion p {
+            font: italic 17px arial;
+        }
+
+        .form-group label {
+            color: var(--clr);
+            font-weight: 600;
+        }
+
+        input[type="text"],input[type="password"],input[type="email"] {
+            border: none;
+            outline: none;
+            font: 18px arial;
+            width: 200px;
+            border-radius: 5px;
+            border: 2px solid;
+            background-color: transparent;
+            color: var(--clr);
+        }
+
+        input::placeholder {
+            color: var(--clr);
+            font: 16px arial;
+        }
+
+        /* MOVE THE SIGN UP CONTENT ON THE HOME SIDE 
+      AND MAKE SOME CHANGES ON THE DESIGN*/
+        .reg {
+            position: absolute;
+            left: calc(50% - 100px);
+            margin: 26px 0;
+        }
+
+        .reg button {
+            background: rgb(255, 255, 255);
+            color: var(--clr);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="home">
+            <div class="content">
+                <img src="{% static 'img/logo_pnb.png' %}" alt="">
+                <h1>Police National du Burundi</h1>
+                <!-- <h1>Bienvenue De Retour...</h1> -->
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur
+                    adipisicing elit. Id commodi qui quae.
+                    Cumque, dolores hic possimus nihil sequi
+                    iure tempora quos recusandae nesciunt
+                    autem neque ut eligendi accusamus, quae laboriosam.
+                </p>
+                <a href="{% url 'login' %}" class="reg"><button>Se connecter</button></a>
+            </div>
+        </div>
+
+        <div class="form">
+            <div class="introduction">
+                <h1> Beinvenue...</h1>
+                <p>Veiller bien remplir cette formulaire pour creer votre compte.</p>
+                <p>Pour la Question de sécurité veuillez utiliser votre matricule comme username.</p>
+            </div>
+            <p class="errors">{{ form.errors }}</p>
+            <form method="post" enctype="multipart/form-data">
+                <span>{% csrf_token %}</span>
+                <div class="input">
+                    <div class="form-group">
+                        <label for="id_first_name">Prénom*:</label><br>
+                        {{ form.username }}
+                    </div>
+                    <div class="form-group">
+                        <label for="id_last_name">Nom*: </label><br>
+                        {{ form.last_name }}
+                    </div>
+                </div>
+                <div class="input">
+                    <div class="form-group">
+                        <label for="id_username">Nom d'utilisateur*:</label><br>
+                        {{ form.username }}
+                    </div>
+                    <div class="form-group">
+                        <label for="id_email">Adresse e-mail*:</label><br>
+                        {{ form.email }}
+                    </div>
+                </div>
+                <div class="input">
+                    <div class="form-group">
+                        <label for="id_password1">Mot de passe*:</label><br>
+                        {{ form.password1 }}
+                    </div>
+                    <div class="form-group">
+                        <label for="id_password2">Confirmer le mot de passe*:</label><br>
+                        {{ form.password2 }}
+                    </div>
+                </div>
+
+                <button type="{% url 'register' %}">S'inscrire</button>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

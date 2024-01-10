@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>get all permission</title>
+    <style>
+        /* Styles CSS pour le body */
+        body {
+            background-color: #dcd9fa;
+        }
+
+        /* Styles CSS pour la table */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            background-color: #0f6ed3;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        th,
+        td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #1e7ab7;
+        }
+
+        th {
+            background-color: #29a0db9e;
+            color: #333;
+            font-weight: bold;
+            font-size: large;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        /* Styles CSS pour les boutons */
+        .button-container {
+            margin-bottom: 10px;
+        }
+
+        .button-container a {
+            display: inline-block;
+            margin-right: 10px;
+            text-decoration: none;
+            padding: 8px 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        /* Styles CSS pour les liens */
+        .link-container a {
+            text-decoration: none;
+            color: blue;
+        }
+
+        .link-container a:hover {
+            text-decoration: underline;
+        }
+
+        /* Styles CSS pour les titres de section */
+        .section-title {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+
+        /* Styles CSS pour les liens de modification et de suppression */
+        .edit-link,
+        .delete-link {
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="button-container">
+        <a href="{% url 'deconnexionUser' %}">Se déconnecter</a>
+        <a href="{% url 'cop' %}">Homme</a>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Matricule</th>
+                <th>Promotion</th>
+                <th>Commandant Promotion</th>
+                <th>Motif</th>
+                <th>Voir la réponse</th>
+                <th>Modifier</th>
+                <th>Supprimer</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for all in all_permission %}
+            <tr>
+                <td>{{ all.demandeur.nom }}</td>
+                <td>{{ all.demandeur.prenom }}</td>
+                <td>{{ all.demandeur.matricule }}</td>
+                <td>{{ all.demandeur.promotion }}</td>
+                <td>{{ all.demandeur.commandant_promotion }}</td>
+                <td>{{ all.motif }}</td>
+                <td class="link-container">
+                    <a href="{% url 'all_reponse' all.id %}">Reponse</a>
+                </td>
+                <td class="link-container edit-link">
+                    <a href="{% url 'update' all.id %}">Modifier le formulaire</a>
+                </td>
+                <td class="link-container delete-link">
+                    <a href="{% url 'deletePerm' all.id %}">Supprimer</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+
+</html>

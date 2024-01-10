@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        position: sticky;
+        width: 100dvw;
+        height: 100dvh;
+        margin: 0;
+        display: grid;
+        place-content: center;
+        background: linear-gradient( to bottom right, rgba(53, 109, 248, 0.3) 20%,rgba(161, 253, 161, 0.15));
+        perspective:300px;
+        overflow: hidden;
+    }
+    /* THESE ARE SOME COMMON DESIGNS */
+    *{box-sizing: border-box}
+    :root{
+        --clr:rgb(24, 24, 179)
+    }
+    a{color: black;text-decoration: none}
+    p{font-size: 17px}
+    ::-webkit-scrollbar{
+        display: none;
+    }
+    .container{
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 25px;
+        width: fit-content;
+        height: auto;
+        padding: 30px;
+        background-color: white;
+        border-radius: 10px;
+        text-align: center;
+    }
+    .person{
+        width: fit-content;
+        padding: 20px 10px;
+        border-radius: 7px;
+        border: 2px solid rgba(53, 109, 248, 0.3);
+        position: relative;
+        text-align: left;
+        margin: auto;
+        color: rgba(53, 109, 248);
+    }
+    .person img{
+        position: relative;
+        left: calc(50% - 50px);
+        width: 100px;
+        height: auto;
+    }
+    .person h3{
+        margin: 5px;
+    }
+    .reponse{
+        width: fit-content;
+        background-color: #0261f2;
+        box-shadow: 0 0 20px #0261f2;
+        margin: auto;
+        border-radius: 7px;
+        color: white;
+    }
+    ul{
+        list-style: none;
+        padding: 0;
+    }
+    ul li{
+        padding: 0;
+        margin: 10px;
+        
+    }
+    ul li.first{
+        height: 200px;
+        width: 400px;
+        font:italic 18px arial;
+        background-color: white;
+        border-radius: 5px;
+        color: rgba(53, 109, 248);
+        overflow: scroll;
+        word-break: break-all;
+        padding: 10px;
+    }
+    /* .date{
+        display: flex;
+    } */
+    .date li{
+        font: italic 15px arial;
+        margin: 0;
+    }
+    .reponse p{
+        margin: 20px;
+        background-color: white;
+        border-radius: 5px;
+        color: #0261f2;
+        padding: 4px;
+    }
+</style>
+<body>
+    {% if all_permission.demandeur.image %}
+    <td><img src="{{ all_permission.demandeur.image.url }}" alt="" ></td>
+    {% else %}
+    <td>No image available</td>
+    {% endif %}
+    <h3> Grade :{{ all_permission.demandeur.grade }} </h3>
+    <h3> Nom :{{ all_permission.demandeur.nom }} </h3>
+    <h3> Prenom :{{ all_permission.demandeur.prenom }} </h3>
+    <h3> Matricule :{{ all_permission.demandeur.matricule }} </h3>
+    <h3>La Reponse: 
+        {% if get_reponse %}
+        <ul>
+            {% for reponse in get_reponse %}
+                <li>{{ reponse.accords }}</li>
+                <li>Date d'aller  {{ reponse.date_aller }}</li>
+                <li>Date de retour {{ reponse.date_retour }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Aucune réponse disponible.</p>
+    {% endif %}
+     </h3>
+</body>
+</html>

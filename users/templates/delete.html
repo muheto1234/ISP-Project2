@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        position: sticky;
+        width: 100dvw;
+        height: 100dvh;
+        padding: 0;
+        margin: 0;
+        display: grid;
+        place-content: center;
+        overflow: hidden;
+        background: linear-gradient( to bottom right, rgba(53, 109, 248, 0.3) 20%,rgba(161, 253, 161, 0.15));
+    }
+
+    /* THESE ARE SOME COMMON DESIGNS */
+    *{box-sizing: border-box}
+    :root{
+        --clr:rgb(24, 24, 179)
+    }
+    a{color: black;text-decoration: none}
+    p{font-size: 17px}
+
+    /* FORMATING THE CONTAINER SIZE AND SOME DESIGN */
+    .container{
+        position: relative;
+        background: white;
+        padding: 40px 20px;
+        /* width: 500px; */
+        /* height: 250px; */
+        border-radius: 10px;
+        text-align: center;
+    }
+    h3{
+        font: italic 20px arial;
+        width: 50%;
+        margin: 13px auto;
+        color: var(--clr);
+    }
+    form{
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+        flex-direction: column;
+    }
+    .mark{
+        position: absolute;
+        top: -50px;
+        left: calc(50% - 50px);
+        width: 100px;
+        height: 100px;
+        display: grid;
+        place-content: center;
+        background-color: var(--clr);
+        border-radius: 50%;
+    }
+    p{  position: absolute;
+        top: -50vh;
+        margin: 0 auto;
+        width: 100%;
+        animation: anime .2s ease-in-out .3s 1 forwards; 
+    }
+    @keyframes anime {
+        100%{
+            top: 0;
+        }
+    }
+    p span{
+        display: inline-block;
+        color: white;
+        padding: 0;
+        margin: 0;
+        font: small-caps 70px tahoma;
+        animation: animate .7s ease-in-out 2s infinite;
+    }
+    @keyframes animate {
+        0%{
+            transform: scale(1);
+        }
+        50%{
+            transform: scale(.9);
+        }
+        80%,100%{
+            transform: scale(1.1);
+        }
+    }
+
+    button{
+        width: 250px;
+        height: 45px;
+        border: none;
+        border-radius: 5px;
+        color: rgb(255, 255, 255);
+        background-color: red;
+        font: 16px tahoma;
+    }
+    .cancel{
+        background-color: rgb(0, 255, 170);
+        background-color: var(--clr);
+        border: none;
+        color: white;
+    }
+
+</style>
+<body>
+    <div class="container">
+        <div class="mark"><p><span>?</span></p></div>
+        
+        <h3>{{name}} Voulez-vous vraiment Supprimer votre demande  ?</h3>
+        <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token%}
+            <a href="{% url 'cop_vue_reponse' obj  %}"><button class="cancel">Cancel</button></a>
+            <button>Delete</button>
+        </form>
+    </div>
+</body>
+</html>

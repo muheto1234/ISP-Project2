@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    {% load static %}
+    <link rel="stylesheet" href="">
+    <style>
+        body {
+            position: sticky;
+            width: 100dvw;
+            height: 100dvh;
+            min-width: 905px;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            place-content: center;
+            overflow: hidden;
+        }
+
+        /* THESE ARE SOME COMMON DESIGNS */
+        * {
+            box-sizing: border-box
+        }
+
+        :root {
+            --clr: rgb(24, 24, 179)
+        }
+
+        a {
+            color: black;
+            text-decoration: none
+        }
+
+        p {
+            font-size: 17px
+        }
+
+        /* FORMATING THE CONTAINER SIZE AND SOME DESIGN */
+        .container {
+            position: relative;
+            display: flex;
+            width: 100vw;
+            height: 100vh;
+            min-width: 905px;
+            perspective: 400px;
+        }
+
+        /* HOME CONTENT */
+        .home {
+            position: absolute;
+            width: 40%;
+            height: 100%;
+            display: grid;
+            place-content: center;
+            color: rgb(31, 31, 39);
+            color: whitesmoke;
+            background: linear-gradient(rgb(115, 115, 255) 10%, rgb(8, 8, 213));
+            font: 18px arial;
+        }
+
+        .content {
+            position: relative;
+            top: -60px;
+            padding: 5vw;
+            text-align: center;
+        }
+
+        .content img {
+            width: 130px;
+            height: auto;
+            filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.532));
+            margin: 0;
+        }
+
+        .content h1 {
+            margin-top: 0;
+            font: 700 small-caps 45px arial;
+        }
+
+        /* FORM CONTENT DESIGNING... */
+        .form {
+            position: relative;
+            top: 50%;
+            left: 70%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-content: center;
+            height: 60%;
+            width: 500px;
+            gap: 10px;
+            /* margin: 0 auto; */
+            transition: .2s ease-in-out;
+            transform: translate(-50%, -50%) rotateX(94.07deg);
+            transform-origin: top;
+            animation: anime .2s ease-in-out 1 forwards;
+        }
+
+        @keyframes anime {
+            100% {
+                transform: translate(-50%, -50%) rotate(0);
+            }
+        }
+
+        .greetings {
+            position: relative;
+            top: -30px;
+            margin: 0 auto;
+            text-align: center;
+            color: rgb(24, 24, 179);
+        }
+
+        .greetings h1,
+        .greetings p {
+            margin: 0;
+            text-align: center;
+            font: 500 40px arial;
+        }
+
+        .greetings p {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .form h3 {
+            font: small-caps 20px arial;
+            text-align: center;
+            margin: 0 auto 20px auto;
+        }
+
+        form {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+
+        form p {
+            margin: 0;
+            height: 35px;
+            width: 300px;
+            border-radius: 5px;
+            padding: 4px;
+            border: 1px solid var(--clr);
+            color: var(--clr);
+            font: 17px tahoma;
+
+            /* background-color:rgba(53, 109, 248, 0.3) ; */
+        }
+
+        form::after {
+            position: absolute;
+            top: -210px;
+            content: '';
+            width: 550px;
+            height: 530px;
+            border-left: 13px solid var(--clr);
+            box-shadow: 0 0 20px rgba(0, 0, 255, 0.335);
+            z-index: -1;
+        }
+
+        /* button */
+        button {
+            cursor: pointer;
+            width: 200px;
+            height: 40px;
+            margin: 0 auto;
+            border: none;
+            border-radius: 30px;
+            outline: none;
+            color: white;
+            text-transform: uppercase;
+            background: linear-gradient(rgb(160, 160, 219), rgb(24, 24, 179) 100%);
+            /* background-color: rgb(63, 63, 189); */
+        }
+
+        .connexion p {
+            font: italic 17px arial;
+        }
+
+        .info {
+            display: flex;
+            gap: 20px;
+        }
+
+        input {
+            box-sizing: border-box;
+            height: 30px;
+            width: 250px;
+            outline: none;
+            border: 2px solid var(--clr);
+            border-radius: 5px;
+            padding: 0 10px;
+            color:var(--clr);
+            font: 16px arial;
+        }
+
+        input::placeholder {
+            color: rgb(94, 94, 159);
+            font: 16px arial;
+        }
+
+        /* MOVE THE SIGN UP CONTENT ON THE HOME SIDE 
+        AND MAKE SOME CHANGES ON THE DESIGN*/
+        .reg {
+            position: absolute;
+            left: calc(50% - 100px);
+            margin: 26px 0;
+        }
+
+        .reg button {
+            background: rgb(255, 255, 255);
+            color: var(--clr);
+        }
+
+        .info{
+            color: var(--clr);
+        }
+
+        .msg {
+            color: red;
+        }
+
+        .image{
+            position: relative;
+            height:27px;
+            width: 250px;
+        }
+        .image label{
+            cursor: pointer;
+            position: relative;
+            top: -29px;
+            left: 0;
+            display: inline-block;
+            height: 27px;
+        }
+        .image span{
+            display: grid;
+            place-content: center;
+            background: rgb(25, 25, 173);
+            color: rgba(255, 255, 255, 0.902);
+            height: 28px;
+            width: 147px;
+            border-radius: 5px 0 0 5px;
+        }
+        .image span:hover{
+            background: rgb(11, 11, 118);
+            color:rgba(255, 255, 255, 0.85);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="home">
+            <div class="content">
+                <img src="{% static 'img/logo_pnb.png' %}" alt="">
+                <h1>Police National du Burundi</h1>
+                <!-- <h1>Bienvenue De Retour...</h1> -->
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur
+                    adipisicing elit. Id commodi qui quae.
+                    Cumque, dolores hic possimus nihil sequi
+                    iure tempora quos recusandae nesciunt
+                    autem neque ut eligendi accusamus, quae laboriosam.
+                </p>
+                <a href="login.html" class="reg"><button>Se connecter</button></a>
+            </div>
+        </div>
+        <div class="form">
+            <div class="greetings">
+                <h1>Bienvenue!!</h1>
+                <p>Veiller bien remplir cette formulaire pour s'inscrire.</p>
+                <p>Veiller entre votre correcte Matricule!</p>
+            </div>
+
+            <!-- {% for message in messages %} -->
+            <h3 class="msg">
+                <!-- {{ message }} ! -->
+            </h3>
+            <!-- {% endfor %} -->
+            <form action="" method="post" enctype="multipart/form-data">
+                <!-- {% csrf_token %} -->
+                <div class="info">
+                    <input type="text" name="grade" placeholder="Entre votre grade">
+                    <input type="text" name="nom" placeholder="Entre votre nom">
+                </div>
+                <div class="info">
+                    <input type="text" name="prenom" placeholder="Entre votre prenom">
+                    <input type="text" name="matricule" placeholder="Entre votre matricule">
+                </div>
+                <div class="info">
+                    <input type="text" name="email" placeholder="Entre votre email">
+                    <input type="text" name="promotion" placeholder="Entre votre promotion">
+                </div>
+                <div class="info">
+                    <input type="password" name="password" placeholder="Entre votre mot de passe">
+                    <input type="password" name="password1" placeholder="Comfirmer le mot de passe">
+                </div>
+                <div class="info">
+                    <input type="text" name="commandant_promotion" placeholder="Entre votre commandant_promotion">
+                    <div class="image">
+                        <input type="file" name="image" id="img">
+                        <label for="img">
+                            <span>Ajouter une photo</span>
+                        </label>
+                    </div>
+                </div>
+                <button type="submit">S'inscrire</button>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

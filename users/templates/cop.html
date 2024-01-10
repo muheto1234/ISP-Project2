@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demande du permission</title>
+</head>
+<style>
+    body {
+        position: sticky;
+        width: 100dvw;
+        height: 100dvh;
+        padding: 0;
+        margin: 0;
+        display: grid;
+        place-content: center;
+        overflow: hidden;
+    }
+
+    /* THESE ARE SOME COMMON DESIGNS */
+    * {
+        box-sizing: border-box
+    }
+
+    :root {
+        --clr: rgb(24, 24, 179)
+    }
+
+    a {
+        color: black;
+        text-decoration: none
+    }
+
+    p {
+        font-size: 17px
+    }
+
+    /* FORMATING THE CONTAINER SIZE AND SOME DESIGN */
+    .container {
+        position: relative;
+        display: flex;
+        width: 100vw;
+        height: 100vh;
+        background: linear-gradient(to bottom right, rgba(53, 109, 248, 0.3) 20%, rgba(161, 253, 161, 0.15));
+    }
+
+    .home {
+        position: relative;
+        left: 100%;
+        /* top: 30px;
+        right: 30px; */
+        display: grid;
+        place-content: center;
+        width: 70%;
+        height: 100%;
+        border-radius: 40px 0 0 40px;
+        text-align: center;
+        color: rgb(31, 31, 39);
+        font: 18px arial;
+        order: 2;
+        margin: auto;
+        background-color: var(--clr);
+        color: white;
+        transition: .2s ease-in-out;
+        animation: home 500ms ease-in-out 1 forwards;
+    }
+
+    @keyframes home {
+        100% {
+            left: 0;
+        }
+    }
+
+    .home h1 {
+        font: small-caps 40px arial;
+    }
+
+    .home h3 {
+        font: italic 500 18px arial;
+        letter-spacing: 3px;
+        width: 80%;
+        margin: auto;
+        text-align: center;
+    }
+
+    img {
+        width: 130px;
+        height: auto;
+        filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.7));
+        margin: 0 auto;
+    }
+
+    .home a {
+        position: relative;
+        top: 30px;
+        margin: 20px auto;
+        /* cursor: default; */
+    }
+
+    .home input {
+        /* position: relative;
+        top: 30px; */
+        cursor: pointer;
+        width: 180px;
+        height: 35px;
+        border-radius: 30px;
+        border: none;
+        outline: none;
+        text-transform: uppercase;
+        -webkit-box-reflect: below .5px linear-gradient(transparent, rgba(0, 0, 0, 0.4));
+    }
+
+    /* FORM CONTENT DESIGNING... */
+    .form {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        /* align-content: center; */
+        height: 100%;
+        width: 130%;
+        gap: 10px;
+        margin: 0 auto;
+        /* background-color: rgb(222, 214, 214); */
+        text-align: center;
+    }
+
+    .content {
+        margin: auto 0;
+    }
+
+    form {
+        width: 90%;
+        height: 100%;
+        /* padding: 3% 0; */
+        background: white;
+        box-shadow: 0 0 20px rgba(0, 0, 255, 0.434);
+        margin: 0 auto;
+        border-radius: 20px;
+        overflow: hidden;
+        overflow-y: scroll;
+    }
+
+    form::-webkit-scrollbar {
+        display: none;
+    }
+
+    form h4 {
+        /* position: relative;
+        bottom: -2vw; */
+        height: 50px;
+        display: grid;
+        place-content: center;
+        font: 17px serif;
+        background: linear-gradient(to top right, rgba(53, 109, 248, 0.3) 20%, rgba(161, 253, 161, 0.15));
+    }
+
+    form p {
+        font: 500 small-caps italic 18px verdana;
+    }
+
+    input[type="text"] {
+        width: 280px;
+        height: 35px;
+        margin: 5px;
+        padding-left: 25px;
+        border: none;
+        /* box-shadow: 0 0 10px rgba(0, 0, 255, 0.4); */
+        border: 2px solid rgba(0, 0, 255, 0.7);
+        /* background: linear-gradient(rgba(160, 160, 219, 0.2) 40%,rgb(24, 24, 179, 0.3)); */
+        color: rgb(94, 94, 244);
+        border-radius: 5px;
+        font: 18px arial;
+        outline: none;
+    }
+
+    input[type="text"]::placeholder {
+        color: rgb(77, 77, 193);
+        /* color: black; */
+    }
+
+    .input {
+        margin: 10px 0;
+    }
+
+    textarea[name="motif"] {
+        position: relative;
+        height: 300px;
+        width: 80%;
+        padding: 10px;
+        border: none;
+        outline: none;
+        font: 18px verdana;
+        color: var(--clr);
+        box-shadow: -1px 2px 10px rgba(0, 0, 255, 0.508);
+        border-radius: 16px;
+    }
+
+    button[type="submit"] {
+        height: 43px;
+        width: 250px;
+        border: none;
+        background: rgb(43, 43, 247) linear-gradient(rgb(82, 82, 248) 50%, var(--clr));
+        color: white;
+        border-radius: 5px;
+        font: 500 18px arial;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    }
+
+    .date {
+        display: flex;
+        justify-content: center;
+        gap: 50px;
+        color: blue;
+    }
+
+    .date .day {
+        /* border: 2px solid blue; */
+        padding: 7px;
+        border-radius: 5px;
+        background: linear-gradient(to right, rgb(226, 226, 255) 50%, rgba(109, 255, 245, 0.3));
+        /* box-shadow: 0 0 20px rgba(0, 0, 255, 0.309); */
+    }
+
+    .day:last-child {
+        background: linear-gradient(to right, rgba(109, 255, 245, 0.3) 10%, rgb(226, 226, 255) 50%);
+    }
+
+    .day input {
+        color: blue;
+        height: 22px;
+        /* background: blue; */
+        border: none;
+        outline: none;
+        border-radius: 3px;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="home">
+            <img src="logo_pnb.png" alt="">
+            {% for nam in name %}
+            <h1>Bienvenue {{nam.nom}} </h1>
+            {% endfor %}
+            <h3>Veiller Bien remplir le formulaire de demande d'une permission</h3>
+            <a href="{% url 'deconnexionUser' %}"><input type="button" value="Se deconnecter"></a>
+        </div>
+        <div class="form">
+            <div class="content">
+                <form action="" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <p>Entre votre motif s'il vous Plait!</p>
+                    <div class="input">
+                        <textarea name="motif" id="" cols="40" rows="15" placeholder="Tapez ici..."></textarea>
+                    </div>
+                    <div class="input date">
+                        <div class="day">
+                            <label for="">Date d'aller:</label><br>
+                            <input type="date" placeholder="entre votre date d'aller" name="date_aller">
+                        </div>
+                        <div class="day">
+                            <label for="">Date de retour:</label><br>
+                            <input type="date" placeholder="entre votre date de retour" name="date_retour">
+                        </div>
+                    </div>
+                    <button type="submit">Envoyer</button>
+                    <h4><a href="{% url 'cop_vue_reponse' matricule %}">Voire la reponse, modifier ou supprimer le
+                            formulaire</a></h4>
+
+
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
